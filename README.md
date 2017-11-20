@@ -9,5 +9,4 @@ See http://docs.rightscale.com/servicenow/index.html for more information.
 - Istanbul
 
 # Change Log
-- Initial commit of currently approved version.
-- 
+- Initial commit of currently approved version (v1.1.11).
