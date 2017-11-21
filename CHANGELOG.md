@@ -6,3 +6,8 @@ Tested in ServiceNow releases:
 - Geneva
 - Helsinki
 - Istanbul
+
+## v1.1.12
+Adds "outputs" field to the Executions resources in the Executions staging table.
+Tested in ServiceNow releases:
+- TBD
