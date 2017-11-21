@@ -5,6 +5,7 @@ Original integration.
 Tested in ServiceNow releases:
 - Geneva
 - Helsinki
+
 Partially Tested in ServiceNow releases:
 - Istanbul
 - Jakarta
