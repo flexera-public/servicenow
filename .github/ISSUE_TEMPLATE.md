@@ -1,17 +1,17 @@
-### Plugin Name
-[This name of the plugin having an issue]
-
 ### Issue Type
 [Bug -or- Feature Request -or- New Plugin Request]
 
-### Plugin version
-[Version of Plugin in use, this can be found in the long_description]
+### ServiceNow Release 
+[The ServiceNow release where the issue was detected.]
+
+### Integration Version
+[Version of Integration in use, this can be found in the System Applications view in ServiceNow]
 
 ### Scenario:
 [What you are trying to achieve and you can't?]
 
 ### Steps to Reproduce:
-[If you are filing an issue what are the things we need to do in order to reproduce your problem? How are you using this plugin or any resource types & actions it includes?]
+[If you are filing an issue what are the things we need to do in order to reproduce your problem?]
 
 ### Expected Result:
 [What are you expecting to happen as the consequence of above reproduction steps?]
