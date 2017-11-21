@@ -7,9 +7,7 @@ See http://docs.rightscale.com/servicenow/index.html for more information.
 v1.1.11
 
 # Supported ServiceNow Releases
-- Geneva
-- Helsinki
-- Istanbul
-
-# Notes
-Light testing has been done with the Jakrata and Kingston ServiceNow releases as well.
+- Geneva - Fully tested
+- Helsinki - Fully tested
+- Istanbul - Smoke tested
+- Jakarta - Smoke tested

@@ -7,3 +7,4 @@ Tested in ServiceNow releases:
 - Helsinki
 Partially Tested in ServiceNow releases:
 - Istanbul
+- Jakarta
