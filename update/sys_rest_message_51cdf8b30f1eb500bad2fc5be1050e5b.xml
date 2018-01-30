@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_rest_message">
+    <sys_rest_message action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <authentication_type/>
+        <basic_auth_password/>
+        <basic_auth_profile/>
+        <basic_auth_user/>
+        <description>REST messages to work with single execution</description>
+        <name>Self-Service Manager Execution Actions</name>
+        <oauth2_profile/>
+        <protocol_name/>
+        <rest_endpoint>${baseUrl}/api/manager/projects/${accountId}/executions/${executionId}</rest_endpoint>
+        <sys_class_name>sys_rest_message</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2015-02-24 13:48:49</sys_created_on>
+        <sys_id>51cdf8b30f1eb500bad2fc5be1050e5b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Self-Service Manager Execution Actions</sys_name>
+        <sys_package display_value="RightScaleCloudManagement" source="x_ris_rightscale_c">adee18db0f61f100bad2fc5be1050e29</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="RightScaleCloudManagement">adee18db0f61f100bad2fc5be1050e29</sys_scope>
+        <sys_update_name>sys_rest_message_51cdf8b30f1eb500bad2fc5be1050e5b</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2015-02-24 13:48:49</sys_updated_on>
+        <use_basic_auth>false</use_basic_auth>
+        <use_mutual_auth>false</use_mutual_auth>
+    </sys_rest_message>
+</record_update>

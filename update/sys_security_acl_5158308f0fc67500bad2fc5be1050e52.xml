@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_security_acl">
+    <sys_security_acl action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <admin_overrides>false</admin_overrides>
+        <advanced>false</advanced>
+        <condition/>
+        <description>Allow read for records in x_ris_rightscale_c_inbound_deployments, for users with role x_ris_rightscale_c_user.</description>
+        <name>x_ris_rightscale_c_inbound_deployments</name>
+        <operation display_value="read">read</operation>
+        <script/>
+        <sys_class_name>sys_security_acl</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2015-02-09 19:13:39</sys_created_on>
+        <sys_id>5158308f0fc67500bad2fc5be1050e52</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>x_ris_rightscale_c_inbound_deployments</sys_name>
+        <sys_package display_value="RightScaleCloudManagement" source="x_ris_rightscale_c">adee18db0f61f100bad2fc5be1050e29</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="RightScaleCloudManagement">adee18db0f61f100bad2fc5be1050e29</sys_scope>
+        <sys_update_name>sys_security_acl_5158308f0fc67500bad2fc5be1050e52</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2015-02-09 19:28:02</sys_updated_on>
+        <type display_value="record">record</type>
+    </sys_security_acl>
+</record_update>

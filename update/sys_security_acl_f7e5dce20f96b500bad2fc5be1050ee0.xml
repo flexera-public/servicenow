@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_security_acl">
+    <sys_security_acl action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <admin_overrides>true</admin_overrides>
+        <advanced>false</advanced>
+        <condition/>
+        <description>Default access control on x_ris_rightscale_c_executions</description>
+        <name>x_ris_rightscale_c_executions</name>
+        <operation display_value="write">write</operation>
+        <script/>
+        <sys_class_name>sys_security_acl</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2015-02-20 13:40:00</sys_created_on>
+        <sys_id>f7e5dce20f96b500bad2fc5be1050ee0</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_ris_rightscale_c_executions</sys_name>
+        <sys_package display_value="RightScaleCloudManagement" source="x_ris_rightscale_c">adee18db0f61f100bad2fc5be1050e29</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="RightScaleCloudManagement">adee18db0f61f100bad2fc5be1050e29</sys_scope>
+        <sys_update_name>sys_security_acl_f7e5dce20f96b500bad2fc5be1050ee0</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2015-02-20 13:40:00</sys_updated_on>
+        <type display_value="record">record</type>
+    </sys_security_acl>
+</record_update>

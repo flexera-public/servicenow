@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Applications" max_length="40" name="x_ris_rightscale_c_applications" type="collection">
+        <element label="parameters" max_length="1000" name="parameters" read_only="true" type="string"/>
+        <element label="Schedule required" max_length="40" name="schedule_required" read_only="true" type="boolean"/>
+        <element label="account" max_length="32" name="u_account" read_only="true" reference="x_ris_rightscale_c_accounts" reference_cascade_rule="cascade" type="reference"/>
+        <element label="href" max_length="255" name="u_href" read_only="true" type="string"/>
+        <element display="true" label="id" mandatory="true" max_length="255" name="u_id" read_only="true" type="string"/>
+        <element label="long_description" max_length="4000" name="u_long_description" read_only="true" type="string"/>
+        <element label="name" max_length="255" name="u_name" read_only="true" type="string"/>
+        <element label="required_parameters" max_length="4000" name="u_required_parameters" read_only="true" type="string"/>
+        <element choice="1" label="schedules" max_length="4000" name="u_schedules" read_only="true" reference="x_ris_rightscale_c_applications" type="glide_list">
+            <choice/>
+        </element>
+        <element label="short_description" max_length="255" name="u_short_description" read_only="true" type="string"/>
+        <index name="index">
+            <element name="u_account"/>
+        </index>
+    </element>
+</database>

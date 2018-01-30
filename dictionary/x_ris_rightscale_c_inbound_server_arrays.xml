@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element extends="sys_import_set_row" label="Inbound Server Arrays" max_length="40" name="x_ris_rightscale_c_inbound_server_arrays" type="collection">
+        <element attributes="import_attribute_name=account" label="Account" max_length="40" name="account" type="string"/>
+        <element attributes="import_attribute_name=cloud_id" label="Cloud ID" max_length="40" name="cloud_id" type="string"/>
+        <element attributes="import_attribute_name=cloud_name" label="Cloud Name" max_length="1000" name="cloud_name" type="string"/>
+        <element attributes="import_attribute_name=deployment" label="Deployment" max_length="1000" name="deployment" type="string"/>
+        <element attributes="import_attribute_name=description" label="Description" max_length="4000" name="description" type="string"/>
+        <element attributes="import_attribute_name=href" label="Href" max_length="1000" name="href" type="string"/>
+        <element attributes="import_attribute_name=id" label="ID" max_length="40" name="id" type="string"/>
+        <element attributes="import_attribute_name=instance_summary" label="Instance summary" max_length="4000" name="instance_summary" type="string"/>
+        <element attributes="import_attribute_name=links" label="Links" max_length="4000" name="links" type="string"/>
+        <element attributes="import_attribute_name=name" label="Name" max_length="1000" name="name" type="string"/>
+        <element attributes="import_attribute_name=state" label="State" max_length="40" name="state" type="string"/>
+        <element attributes="import_attribute_name=tags" label="Tags" max_length="4000" name="tags" type="string"/>
+        <element attributes="import_attribute_name=u_resource_ids" label="Resource IDs" max_length="65000" name="u_resource_ids" type="string"/>
+    </element>
+</database>

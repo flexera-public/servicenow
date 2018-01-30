@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_scope_script_access">
+    <sys_scope_script_access action="INSERT_OR_UPDATE">
+        <example_stack_trace>glide.scheduler.worker.6
+	com.glide.sys.fencing.dependency.ScopeAccessProvider$ScopeAccessCache.getCurrentStackTrace(ScopeAccessProvider.java:231)
+	com.glide.sys.fencing.dependency.ScopeAccessProvider$ScopeAccessCache.record(ScopeAccessProvider.java:200)
+	com.glide.sys.fencing.dependency.ScopeAccessProvider$ScopeAccessCache.access$100(ScopeAccessProvider.java:80)
+	com.glide.sys.fencing.dependency.ScopeAccessProvider.recordAccess(ScopeAccessProvider.java:63)
+	com.glide.sys.fencing.dependency.ScopeAccessRecorder.record(ScopeAccessRecorder.java:13)
+	com.glide.script.system.ASystemInclude.recordCrossScopeAccess(ASystemInclude.java:122)
+	com.glide.script.system.ASystemInclude.include(ASystemInclude.java:105)
+	com.glide.script.AGlideRhinoScopeHandler.isScriptInclude(AGlideRhinoScopeHandler.java:43)
+	com.glide.script.GlideRhinoScopeHandler.found(GlideRhinoScopeHandler.java:24)
+	com.glide.script.ARhinoScope.get(ARhinoScope.java:69)
+	com.glide.script.RhinoScope.get(RhinoScope.java:47)
+	com.glide.script.PackageRhinoGlobalScope.get(PackageRhinoGlobalScope.java:34)
+	org.mozilla.javascript.ScriptableObject.getProperty(ScriptableObject.java:1478)
+	org.mozilla.javascript.ScriptRuntime.getProp(ScriptRuntime.java:724)
+	org.mozilla.javascript.Interpreter.interpret(Interpreter.java:2041)
+	org.mozilla.javascript.InterpretedScript.call(InterpretedScript.java:62)
+	org.mozilla.javascript.InterpretedScript.exec(InterpretedScript.java:55)
+	com.glide.script.ScriptEvaluator.execute(ScriptEvaluator.java:222)
+	com.glide.script.ScriptEvaluator.evaluateString(ScriptEvaluator.java:105)
+	com.glide.script.ScriptEvaluator.evaluateString(ScriptEvaluator.java:72)
+	com.glide.script.ScriptEvaluator.evaluateString(ScriptEvaluator.java:63)
+	com.glide.script.Evaluator.evaluateString(Evaluator.java:91)
+	com.snc.automation.ScriptJob.execute(ScriptJob.java:38)
+	com.glide.schedule.JobExecutor.execute(JobExecutor.java:79)
+	com.glide.schedule.GlideScheduleWorker.executeJob(GlideScheduleWorker.java:177)
+	com.glide.schedule.GlideScheduleWorker.process(GlideScheduleWorker.java:124)
+	com.glide.schedule.GlideScheduleWorker.run(GlideScheduleWorker.java:56)
+</example_stack_trace>
+        <script_name>ImportSetCleaner</script_name>
+        <source_scope display_value="RightScaleCloudManagement">adee18db0f61f100bad2fc5be1050e29</source_scope>
+        <sys_class_name>sys_scope_script_access</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2015-03-02 16:34:49</sys_created_on>
+        <sys_id>5edd1c350f623900bad2fc5be1050e3c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>ImportSetCleaner</sys_name>
+        <sys_package display_value="RightScaleCloudManagement" source="x_ris_rightscale_c">adee18db0f61f100bad2fc5be1050e29</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="RightScaleCloudManagement">adee18db0f61f100bad2fc5be1050e29</sys_scope>
+        <sys_update_name>sys_scope_script_access_5edd1c350f623900bad2fc5be1050e3c</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2015-03-02 16:34:49</sys_updated_on>
+        <target_scope display_value="Global">global</target_scope>
+    </sys_scope_script_access>
+</record_update>

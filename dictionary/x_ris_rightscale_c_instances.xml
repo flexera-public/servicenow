@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Instances" max_length="40" name="x_ris_rightscale_c_instances" type="collection">
+        <element label="account" max_length="32" name="u_account" read_only="true" reference="x_ris_rightscale_c_accounts" reference_cascade_rule="cascade" type="reference"/>
+        <element label="cloud_id" max_length="255" name="u_cloud_id" read_only="true" type="string"/>
+        <element label="cloud_name" max_length="255" name="u_cloud_name" read_only="true" type="string"/>
+        <element label="created_at" max_length="40" name="u_created_at" read_only="true" type="string"/>
+        <element label="datacenter_name" max_length="255" name="u_datacenter_name" read_only="true" type="string"/>
+        <element label="deployment" max_length="32" name="u_deployment" read_only="true" reference="x_ris_rightscale_c_deployments" reference_cascade_rule="cascade" type="reference"/>
+        <element label="description" max_length="4000" name="u_description" read_only="true" type="string"/>
+        <element label="href" max_length="255" name="u_href" read_only="true" type="string"/>
+        <element label="id" max_length="255" name="u_id" read_only="true" type="string"/>
+        <element label="image_name" max_length="255" name="u_image_name" read_only="true" type="string"/>
+        <element label="instance_type_name" max_length="255" name="u_instance_type_name" read_only="true" type="string"/>
+        <element label="ip_addresses" max_length="4000" name="u_ip_addresses" read_only="true" type="glide_list"/>
+        <element label="mci_name" max_length="255" name="u_mci_name" read_only="true" type="string"/>
+        <element label="name" max_length="255" name="u_name" read_only="true" type="string"/>
+        <element label="network_names" max_length="4000" name="u_network_names" read_only="true" type="glide_list"/>
+        <element label="os_platform" max_length="255" name="u_os_platform" read_only="true" type="string"/>
+        <element label="private_dns_names" max_length="4000" name="u_private_dns_names" read_only="true" type="glide_list"/>
+        <element label="private_ip_addresses" max_length="4000" name="u_private_ip_addresses" read_only="true" type="glide_list"/>
+        <element label="public_dns_names" max_length="4000" name="u_public_dns_names" read_only="true" type="glide_list"/>
+        <element label="public_ip_addresses" max_length="4000" name="u_public_ip_addresses" read_only="true" type="glide_list"/>
+        <element label="resource_uid" max_length="255" name="u_resource_uid" read_only="true" type="string"/>
+        <element label="security_group_names" max_length="4000" name="u_security_group_names" read_only="true" type="glide_list"/>
+        <element label="server_template_name" max_length="255" name="u_server_template_name" read_only="true" type="string"/>
+        <element label="server_template_version" max_length="40" name="u_server_template_version" read_only="true" type="integer"/>
+        <element label="ssh_key_name" max_length="255" name="u_ssh_key_name" read_only="true" type="string"/>
+        <element label="state" max_length="40" name="u_state" read_only="true" type="string"/>
+        <element label="subnet_names" max_length="4000" name="u_subnet_names" read_only="true" type="glide_list"/>
+        <element label="tags" max_length="4000" name="u_tags" read_only="true" type="glide_list"/>
+        <element label="terminated_at" max_length="40" name="u_terminated_at" read_only="true" type="string"/>
+        <index name="index">
+            <element name="u_deployment"/>
+        </index>
+        <index name="index2">
+            <element name="u_account"/>
+        </index>
+    </element>
+</database>

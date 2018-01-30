@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_scope_script_access">
+    <sys_scope_script_access action="INSERT_OR_UPDATE">
+        <example_stack_trace>glide.scheduler.worker.3
+	com.glide.sys.fencing.dependency.ScopeAccessProvider$ScopeAccessCache.getCurrentStackTrace(ScopeAccessProvider.java:231)
+	com.glide.sys.fencing.dependency.ScopeAccessProvider$ScopeAccessCache.record(ScopeAccessProvider.java:200)
+	com.glide.sys.fencing.dependency.ScopeAccessProvider$ScopeAccessCache.access$100(ScopeAccessProvider.java:80)
+	com.glide.sys.fencing.dependency.ScopeAccessProvider.recordAccess(ScopeAccessProvider.java:63)
+	com.glide.sys.fencing.dependency.ScopeAccessRecorder.record(ScopeAccessRecorder.java:13)
+	com.glide.script.system.ASystemInclude.recordCrossScopeAccess(ASystemInclude.java:123)
+	com.glide.script.system.ASystemInclude.include(ASystemInclude.java:106)
+	com.glide.script.AGlideRhinoScopeHandler.isScriptInclude(AGlideRhinoScopeHandler.java:43)
+	com.glide.script.GlideRhinoScopeHandler.found(GlideRhinoScopeHandler.java:24)
+	com.glide.script.ARhinoScope.get(ARhinoScope.java:75)
+	com.glide.script.RhinoScope.get(RhinoScope.java:51)
+	com.glide.script.PackageRhinoGlobalScope.get(PackageRhinoGlobalScope.java:34)
+	com.glide.script.PackageParent.isObjectInGlobal(PackageParent.java:50)
+	com.glide.script.PackageParent.get(PackageParent.java:31)
+	org.mozilla.javascript.ScriptableObject.getProperty(ScriptableObject.java:1478)
+	org.mozilla.javascript.ScriptRuntime.name(ScriptRuntime.java:1083)
+	org.mozilla.javascript.gen.c8597.call(sys_transform_script.a5d83d280fb27100bad2fc5be1050efd:8)
+	org.mozilla.javascript.gen.c8597.exec(sys_transform_script.a5d83d280fb27100bad2fc5be1050efd)
+	com.glide.script.ScriptEvaluator.execute(ScriptEvaluator.java:233)
+	com.glide.script.ScriptEvaluator.evaluateString(ScriptEvaluator.java:105)
+	com.glide.script.ScriptEvaluator.evaluateString(ScriptEvaluator.java:72)
+	com.glide.script.fencing.GlideScopedEvaluator.evaluateScript(GlideScopedEvaluator.java:298)
+	com.glide.script.fencing.GlideScopedEvaluator.evaluateScript(GlideScopedEvaluator.java:264)
+	com.glide.script.fencing.GlideScopedEvaluator.evaluateScript(GlideScopedEvaluator.java:235)
+	com.glide.script.fencing.GlideScopedEvaluator.evaluateScript(GlideScopedEvaluator.java:225)
+	com.glide.db.impex.transformer.TransformerScript.runScript(TransformerScript.java:61)
+	com.glide.db.impex.transformer.TransformerScript.runWhenScript(TransformerScript.java:122)
+	com.glide.db.impex.transformer.Transformer.runOnBeforeScript(Transformer.java:269)
+	com.glide.db.impex.transformer.Transformer.transformBatch(Transformer.java:142)
+	com.glide.db.impex.transformer.Transformer.transform(Transformer.java:76)
+	com.glide.system_import_set.ImportSetTransformerImpl.transformEach(ImportSetTransformerImpl.java:237)
+	com.glide.system_import_set.ImportSetTransformerImpl.syncTransformEach(ImportSetTransformerImpl.java:160)
+	com.glide.system_import_set.ImportSetTransformerImpl.transformAllMaps(ImportSetTransformerImpl.java:89)
+	com.glide.system_import_set.ImportSetTransformer.transformAllMaps(ImportSetTransformer.java:59)
+	sun.reflect.GeneratedMethodAccessor1209.invoke(Unknown Source)
+	sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	java.lang.reflect.Method.invoke(Method.java:597)
+	org.mozilla.javascript.NativeJavaMethod.call(NativeJavaMethod.java:255)
+	org.mozilla.javascript.ScriptRuntime.call(ScriptRuntime.java:1227)
+	org.mozilla.javascript.gen.c3333.call(sys_script.448824870a0a0b24000b128f92f7c975:9)
+	org.mozilla.javascript.gen.c3333.exec(sys_script.448824870a0a0b24000b128f92f7c975)
+	com.glide.script.ScriptEvaluator.execute(ScriptEvaluator.java:233)
+	com.glide.script.ScriptEvaluator.evaluateString(ScriptEvaluator.java:105)
+	com.glide.script.ScriptEvaluator.evaluateString(ScriptEvaluator.java:72)
+	com.glide.script.BusinessRule.runScript(BusinessRule.java:346)
+	com.glide.script.BusinessRule.runSyncBusinessRule(BusinessRule.java:258)
+	com.glide.script.BusinessRule.runBusinessRule(BusinessRule.java:170)
+	com.glide.script.BusinessRule.run(BusinessRule.java:146)
+	com.glide.script.GlideRecordBusinessRules.run(GlideRecordBusinessRules.java:85)
+	com.glide.script.GlideRecord.runScripts(GlideRecord.java:1159)
+	com.glide.script.GlideRecord.runScriptsAndEngines(GlideRecord.java:1109)
+	com.glide.script.GlideRecord.postChange(GlideRecord.java:4478)
+	com.glide.script.GlideRecord.postInsert(GlideRecord.java:4446)
+	com.glide.script.GlideRecord.insert(GlideRecord.java:4382)
+	com.glide.script.GlideRecord.insert(GlideRecord.java:4298)
+	com.glide.script.GlideRecord.jsFunction_insert(GlideRecord.java:4717)
+	com.glide.script.fencing.ScopedGlideRecord.jsFunction_insert(ScopedGlideRecord.java:140)
+	sun.reflect.GeneratedMethodAccessor1203.invoke(Unknown Source)
+	sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	java.lang.reflect.Method.invoke(Method.java:597)
+	org.mozilla.javascript.FunctionObject.doInvoke(FunctionObject.java:597)
+	org.mozilla.javascript.FunctionObject.call(FunctionObject.java:504)
+	org.mozilla.javascript.ScriptRuntime.call(ScriptRuntime.java:1227)
+	org.mozilla.javascript.gen.c8543.call(sys_script_include.4ce36ee10f713500bad2fc5be1050e5d:275)
+	org.mozilla.javascript.ScriptRuntime.call(ScriptRuntime.java:1227)
+	org.mozilla.javascript.gen.c8548.call(sys_script_include.4ce36ee10f713500bad2fc5be1050e5d:372)
+	org.mozilla.javascript.ScriptRuntime.call(ScriptRuntime.java:1227)
+	org.mozilla.javascript.gen.c8370.call(&lt;refname&gt;:17)
+	org.mozilla.javascript.gen.c8370.exec(&lt;refname&gt;)
+	com.glide.script.ScriptEvaluator.execute(ScriptEvaluator.java:233)
+	com.glide.script.ScriptEvaluator.evaluateString(ScriptEvaluator.java:105)
+	com.glide.script.ScriptEvaluator.evaluateString(ScriptEvaluator.java:72)
+	com.glide.script.ScriptEvaluator.evaluateString(ScriptEvaluator.java:63)
+	com.glide.script.Evaluator.evaluateString(Evaluator.java:91)
+	com.snc.automation.ScriptJob.execute(ScriptJob.java:38)
+	com.glide.schedule.JobExecutor.execute(JobExecutor.java:79)
+	com.glide.schedule.GlideScheduleWorker.executeJob(GlideScheduleWorker.java:177)
+	com.glide.schedule.GlideScheduleWorker.process(GlideScheduleWorker.java:124)
+	com.glide.schedule.GlideScheduleWorker.run(GlideScheduleWorker.java:56)
+</example_stack_trace>
+        <script_name>ArrayUtil</script_name>
+        <source_scope display_value="RightScaleCloudManagement">adee18db0f61f100bad2fc5be1050e29</source_scope>
+        <sys_class_name>sys_scope_script_access</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2015-03-20 21:10:50</sys_created_on>
+        <sys_id>30a902af4ff6b1005d02e321a310c782</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>ArrayUtil</sys_name>
+        <sys_package display_value="RightScaleCloudManagement" source="x_ris_rightscale_c">adee18db0f61f100bad2fc5be1050e29</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="RightScaleCloudManagement">adee18db0f61f100bad2fc5be1050e29</sys_scope>
+        <sys_update_name>sys_scope_script_access_30a902af4ff6b1005d02e321a310c782</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2015-03-20 21:10:50</sys_updated_on>
+        <target_scope display_value="Global">global</target_scope>
+    </sys_scope_script_access>
+</record_update>

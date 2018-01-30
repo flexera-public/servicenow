@@ -1,0 +1,564 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_ris_rightscale_c.RightScaleResource</api_name>
+        <client_callable>false</client_callable>
+        <description>Main functions to manage RightScale resources</description>
+        <name>RightScaleResource</name>
+        <script><![CDATA[var RightScaleResource = Class.create();
+RightScaleResource.prototype = {
+	initialize: function(name, service) {
+		this.name = name;
+		this.service = service;
+		this.helper = new RightScaleHelper();
+	},
+	
+	getRSResourceByHref: function(account, href){
+		var r = new sn_ws.RESTMessageV2('x_ris_rightscale_c.RightScaleAPI Get Resource', 'get');
+		r.setStringParameter('apiVersion', account.u_api_version);
+		r.setStringParameter('href', href);
+		r.setStringParameter('accessToken', account.u_access_token.getDecryptedValue());
+		r.setStringParameter('baseUrl', account.u_endpoint);
+		var response = r.execute();
+		this.helper.logResponse(response);
+		return new global.JSON().decode(response.getBody());
+	},
+	
+	getRSAccount: function(account){
+		var r = new sn_ws.RESTMessageV2('x_ris_rightscale_c.RightScaleAPI Get Account', 'get');
+		r.setStringParameter('baseUrl', account.u_endpoint);
+		r.setStringParameter('accessToken', account.u_access_token.getDecryptedValue());
+		r.setStringParameter('accountId', account.u_id);
+		var response = r.execute();
+		this.helper.logResponse(response);
+		return new global.JSON().decode(response.getBody());
+	},
+	
+	getRSDeployments: function(account){
+		var r = new sn_ws.RESTMessageV2('x_ris_rightscale_c.RightScaleAPI Deployments', 'get');
+		r.setStringParameter('baseUrl', account.u_endpoint);
+		r.setStringParameter('apiVersion', account.u_api_version);
+		r.setStringParameter('accessToken', account.u_access_token.getDecryptedValue());
+		var response = r.execute();
+		this.helper.logResponse(response);
+		return new global.JSON().decode(response.getBody());
+	},
+	
+	createRSDeployment: function(deployment, account){
+		var r = new sn_ws.RESTMessageV2('x_ris_rightscale_c.RightScaleAPI Deployments', 'post');
+		r.setStringParameter('baseUrl', account.u_endpoint);
+		r.setStringParameter('apiVersion', account.u_api_version);
+		r.setStringParameter('accessToken', account.u_access_token.getDecryptedValue());
+		r.setStringParameter('name', deployment.u_name);
+		r.setStringParameter('description', deployment.u_description);
+		var response = r.execute();
+		this.helper.logResponse(response);
+		var httpStatus = response.getStatusCode();
+		var location = response.getHeader('Location');
+		gs.debug("Response header 'Location': " + location);
+		return (httpStatus == 201) ? location : false;
+	},
+	
+	saveToInboundDeployment: function(rs_deployment, lastUpdateAt){
+		if (this.helper.skipUpdate(rs_deployment.timestamps, lastUpdateAt))
+			return false;
+		
+		var gr = new GlideRecord('x_ris_rightscale_c_inbound_deployments');
+		gr.initialize();
+		gr.u_id = rs_deployment.id.toString();
+		gr.u_name = rs_deployment.name;
+		gr.u_description = rs_deployment.description;
+		gr.u_account_id = rs_deployment.links.account.id.toString();
+		gr.u_account_name = rs_deployment.links.account.name;
+		gr.u_href = rs_deployment.href;
+		gr.u_links = new global.JSON().encode(rs_deployment.links);
+		if (rs_deployment.tags)
+			gr.u_tags = rs_deployment.tags.join();
+		return gr.insert();
+	},
+	
+	saveToInboundServer: function(rs_server, lastUpdateAt){
+		if (this.helper.skipUpdate(rs_server.timestamps, lastUpdateAt))
+			return false;
+		
+		var gr = new GlideRecord('x_ris_rightscale_c_servers_web');
+		gr.initialize();
+		gr.u_id = rs_server.id.toString();
+		gr.u_name = rs_server.name;
+		gr.u_description = rs_server.description;
+		gr.u_href = rs_server.href;
+		gr.u_links = new global.JSON().encode(rs_server.links);
+		gr.u_account = rs_server.links.account.id.toString();
+		
+		var instance = rs_server.instance;
+		gr.u_cloud_id = instance.links.cloud.id.toString();
+		gr.u_cloud_name = instance.links.cloud.name;
+		gr.u_deployment_id = instance.links.deployment.id.toString();
+		gr.u_server_template_id = instance.server_template.id.toString();
+		gr.u_server_template_name = instance.server_template.name;
+		gr.u_state = instance.state;
+		if (rs_server.tags)
+			gr.u_tags = rs_server.tags.join();
+		return gr.insert();
+	},
+	
+	saveToInboundServerArray: function(serverArray, lastUpdateAt){
+		if (this.helper.skipUpdate(serverArray.timestamps, lastUpdateAt))
+			return false;
+		
+		var gr = new GlideRecord('x_ris_rightscale_c_inbound_server_arrays');
+		gr.initialize();
+		gr.id = serverArray.id.toString();
+		gr.name = serverArray.name;
+		gr.description = serverArray.description;
+		gr.href = serverArray.href;
+		gr.links = new global.JSON().encode(serverArray.links);
+		gr.account = serverArray.links.account.id.toString();
+		
+		gr.cloud_id = serverArray.links.cloud.id.toString();
+		gr.cloud_name = serverArray.links.cloud.name;
+		gr.instance_summary = new global.JSON().encode(serverArray.instance_summary);
+		gr.deployment = serverArray.next_instance.links.deployment.id.toString();
+		gr.state = serverArray.state;
+		if (serverArray.tags)
+			gr.tags = serverArray.tags.join();
+		return gr.insert();
+	},
+	
+	saveToInboundInstance: function(rs_instance, lastUpdateAt){
+		if (this.helper.skipUpdate(rs_instance.timestamps, lastUpdateAt))
+			return false;
+		
+		var gr = new GlideRecord('x_ris_rightscale_c_inbound_instances');
+		gr.initialize();
+		gr.u_id = rs_instance.id.toString();
+		gr.u_name = rs_instance.name;
+		gr.u_description = rs_instance.description;
+		gr.u_href = rs_instance.href;
+		gr.u_links = new global.JSON().encode(rs_instance.links);
+		gr.u_cloud_id = rs_instance.links.cloud.id.toString();
+		gr.u_cloud_name = rs_instance.links.cloud.name;
+		if (rs_instance.links.deployment)
+			gr.u_deployment = rs_instance.links.deployment.id.toString();
+		if (rs_instance.server_template) {
+			gr.u_server_template_name = rs_instance.server_template.name;
+			gr.u_server_template_version = rs_instance.server_template.version;
+		}
+		gr.u_state = rs_instance.state;
+		gr.u_account = rs_instance.links.account.id.toString();
+		// instance specific attributes
+		if (rs_instance.public_ip_addresses)
+			gr.u_public_ip_addresses = rs_instance.public_ip_addresses.join();
+		
+		if (rs_instance.links.datacenter)
+			gr.u_datacenter_name = rs_instance.links.datacenter.name;
+		
+		if (rs_instance.public_dns_names)
+			gr.u_public_dns_names = rs_instance.public_dns_names.join();
+		
+		var i = 0;
+		if (rs_instance.networks){
+			var network_names = [];
+			for (i = 0; i < rs_instance.networks.length; i++) {
+				var network = rs_instance.networks[i];
+				network_names.push(network.name);
+			}
+			gr.u_network_names = network_names.join();
+		}
+		
+		if (rs_instance.ip_addresses) {
+			var ip_names = [];
+			for (i = 0; i < rs_instance.ip_addresses.length; i++) {
+				var ip = rs_instance.ip_addresses[i];
+				ip_names.push(ip.name);
+			}
+			gr.u_ip_addresses = ip_names.join();
+		}
+		
+		gr.u_created_at = rs_instance.timestamps.created_at;
+		gr.u_terminated_at = rs_instance.timestamps.terminated_at;
+		
+		if (rs_instance.links.datacenter)
+			gr.u_datacenter_name = rs_instance.links.datacenter.name;
+		if (rs_instance.links.image)
+			gr.u_image_name = rs_instance.links.image.name;
+		if (rs_instance.links.instance_type)
+			gr.u_instance_type_name = rs_instance.links.instance_type.name;
+		if (rs_instance.links.multi_cloud_image)
+			gr.u_mci_name = rs_instance.links.multi_cloud_image.name;
+		gr.u_os_platform = rs_instance.os_platform;
+		if (rs_instance.private_dns_names)
+			gr.u_private_dns_names = rs_instance.private_dns_names.join();
+		if (rs_instance.private_ip_addresses)
+			gr.u_private_ip_addresses = rs_instance.private_ip_addresses.join();
+		if (rs_instance.tags)
+			gr.u_tags = rs_instance.tags.join();
+		gr.u_resource_uid = rs_instance.resource_uid;
+		
+		if (rs_instance.links.ssh_key)
+			gr.u_ssh_key_name = rs_instance.links.ssh_key.resource_uid;
+		
+		if (rs_instance.subnets){
+			var subnets_names = [];
+			for (var i1 = 0; i1 < rs_instance.subnets.length; i1++) {
+				var subnet = rs_instance.subnets[i1];
+				subnets_names.push(subnet.name);
+			}
+			gr.u_subnet_names = subnets_names.join();
+		}
+		
+		if (rs_instance.security_groups){
+			var security_groups_names = [];
+			for (var i2 = 0; i2 < rs_instance.security_groups.length; i2++) {
+				var security_group = rs_instance.security_groups[i2];
+				security_groups_names.push(security_group.name);
+			}
+			gr.u_security_group_names = security_groups_names.join();
+		}
+		return gr.insert();
+	},
+	
+	saveToInboundApplication: function(ss_app, account){
+		var lastUpdateAt = account.applications_updated_at ? (new GlideDateTime(account.applications_updated_at)) : null;
+		if (this.helper.skipUpdate(ss_app.timestamps, lastUpdateAt))
+			return false;
+		
+		var gr = new GlideRecord('x_ris_rightscale_c_inbound_applications');
+		gr.initialize();
+		gr.u_id = ss_app.id.toString();
+		gr.u_name = ss_app.name;
+		gr.u_short_description = ss_app.short_description;
+		if (ss_app.long_description) {
+			gr.u_long_description = ss_app.long_description;
+		}
+		gr.u_href = ss_app.href;
+		gr.u_account_id = account.u_id;
+		if (ss_app.schedules){
+			gr.u_schedules = new global.JSON().encode(ss_app.schedules);//schedules.join();
+			gr.schedule_required = ss_app.schedule_required;
+		}
+		
+		gr.u_required_parameters = new global.JSON().encode(ss_app.required_parameters);
+		gr.parameters = new global.JSON().encode(ss_app.parameters);
+		return gr.insert();
+	},
+	
+	saveToInboundExecution: function(ss_exec, account){
+		var gr = new GlideRecord('x_ris_rightscale_c_inbound_executions');
+		gr.initialize();
+		gr.u_id = ss_exec.id.toString();
+		gr.u_name = ss_exec.name;
+		
+		if (ss_exec.description)
+			gr.u_description = ss_exec.description;
+		gr.u_href = ss_exec.href;
+		gr.u_account_id = account.u_id.toString();
+		if (ss_exec.deployment)
+			gr.u_deployment = ss_exec.deployment.match(/\/(\w+)$/)[1];
+		gr.u_status = ss_exec.status;
+		gr.u_cost_unit = ss_exec.cost.unit;
+		gr.u_cost_value = ss_exec.cost.value;
+		gr.u_created_at = ss_exec.timestamps.created_at;
+		gr.u_terminated_at = ss_exec.timestamps.terminated_at;
+		gr.u_created_by = new global.JSON().encode(ss_exec.created_by);
+		gr.u_links = new global.JSON().encode(ss_exec.links);
+		if (ss_exec.launched_from_summary) {
+			gr.u_launched_from_href = ss_exec.launched_from_summary.value.name;
+			gr.u_launched_from_name = ss_exec.launched_from_summary.value.href;
+			gr.u_launched_from_type = ss_exec.launched_from_summary.type;
+			if (ss_exec.launched_from_summary.type == 'application'){
+				gr.u_application = ss_exec.launched_from_summary.value.href.match(/\/(\w+)$/)[1];
+			}
+		}
+		return gr.insert();
+	},
+	
+	deleteResources: function(existingResourceIds, account, tableName){
+		if (!tableName) tableName = 'x_ris_rightscale_c_inbound_' + this.name;
+			var gr = new GlideRecord(tableName);
+		//existingResourceIds could be false in case of empty array
+		//put faked id to the list to correctly set u_resource_ids field  
+		if (!existingResourceIds) existingResourceIds = ['fake_id'];
+		gr.initialize();
+		gr.u_id = 'ignore me';
+		gr.u_name = 'ignore me';
+		if ((tableName == 'x_ris_rightscale_c_inbound_instances') || (tableName == 'x_ris_rightscale_c_servers_web')) {
+			gr.u_account = account.sys_id;
+		} else {
+			gr.u_account_id = account.sys_id;
+		}
+		
+		gr.u_description = 'This is a special kind of Import set record which used for deleting records from CMDB table.';
+		gr.u_resource_ids = existingResourceIds.join();
+		gr.insert();
+	},
+	
+	deleteServerArrays: function(existingArrayIds, account){
+		if (!existingArrayIds) existingArrayIds = ['fake_id'];
+		var gr = new GlideRecord('x_ris_rightscale_c_inbound_server_arrays');
+		gr.initialize();
+		gr.id = 'ignore me';
+		gr.name = 'ignore me';
+		gr.account = account.sys_id;
+		
+		gr.description = 'This is a special kind of Import set record which used for deleting records from CMDB table.';
+		gr.u_resource_ids = existingArrayIds.join();
+		gr.insert();
+	},
+	
+	deleteRSDepoyment: function(grDeployment){
+		var account = new GlideRecord('x_ris_rightscale_c_accounts');
+		if (account.get(grDeployment.u_x_ris_rightscale_c_account_id)){
+			var r = new sn_ws.RESTMessageV2('x_ris_rightscale_c.RightScaleAPI Deployments', 'delete');
+			r.setStringParameter('deploymentId', grDeployment.u_id);
+			r.setStringParameter('baseUrl', account.u_endpoint);
+			r.setStringParameter('apiVersion', account.u_api_version);
+			r.setStringParameter('accessToken', account.u_access_token.getDecryptedValue());
+			var response = r.execute();
+			this.helper.logResponse(response);
+			return (response.getStatusCode() == 200) ? true : false;
+		} else {
+			return false;
+		}
+	},
+	
+	getRSResource: function(account){
+		var r = new sn_ws.RESTMessageV2('x_ris_rightscale_c.RightScaleAPI ' + this.helper.capitalizeString(this.name), 'get');
+		r.setStringParameter('baseUrl', account.u_endpoint);
+		r.setStringParameter('apiVersion', account.u_api_version);
+		r.setStringParameter('accountId', account.u_id);
+		r.setStringParameter('view', 'full');
+		r.setStringParameter('accessToken', account.u_access_token.getDecryptedValue());
+		var response = r.execute();
+		var responseBody = response.getBody();
+		var httpStatus = response.getStatusCode();
+		this.helper.logResponse(response);
+		
+		if (httpStatus != 200) return false;
+		
+		var result = new global.JSON().decode(responseBody);
+		// workaround on case when list of resources is empty
+		// weird but this method return false even if 'return [];'
+		if (result == false) return true;
+		// make sure that we got a valid json otherwise skip
+		// in order to prevent the following error let's don't verify a huge responses
+		// error: java.lang.RuntimeException: String object has exceeded max size of 16777216
+		if ((result.length < 500) && (!this.helper.validateJSON(responseBody))) {
+			gs.error("Got invalid json for account " + account.u_id + " from REST message: x_ris_rightscale_c.RightScaleAPI "+ this.helper.capitalizeString(this.name));
+			return false;
+		}
+		
+		return result;
+	},
+	
+	getSSResource: function(account){
+		var r = new sn_ws.RESTMessageV2('x_ris_rightscale_c.Self-Service ' + this.helper.capitalizeString(this.service) + ' ' + this.helper.capitalizeString(this.name), 'get');
+		r.setStringParameter('baseUrl', account.u_ss_endpoint);
+		r.setStringParameter('apiVersion', account.u_ss_api_version);
+		r.setStringParameter('accountId', account.u_id);
+		r.setStringParameter('accessToken', account.u_access_token.getDecryptedValue());
+		var response = r.execute();
+		var responseBody = response.getBody();
+		var httpStatus = response.getStatusCode();
+		this.helper.logResponse(response);
+		if (httpStatus != 200) {
+			return false;
+		}
+		var result = new global.JSON().decode(responseBody);
+		// workaround on case when list of resources is empty
+		// weird but this method return false even if 'return [];'
+		if (result == false) return true;
+
+		return result;
+	},
+	
+	updateAll: function(resources, account){
+		// workaround on case when list of resource is empty
+		if (resources == true) resources = [];
+		gs.info("Updating " + resources.length + " " + this.name + " for account " + account.u_id);
+		var updateTime = new GlideDateTime();
+		var resourceIds = [];
+		var updatedResources = 0;
+		for (var i = 0; i < resources.length; i++) {
+			var resource = resources[i];
+			resourceIds.push(resource.id);
+			if (this.name == 'applications'){
+				if (this.saveToInboundApplication(resource, account))
+					updatedResources +=1;
+			} else if (this.name == 'executions'){
+				if (this.saveToInboundExecution(resource, account))
+					updatedResources +=1;
+			}
+		}
+		
+		//update account timestamp
+		if (this.name == 'applications'){
+			account.applications_updated_at = updateTime;
+			account.update();
+		}
+		gs.info("Updated " + updatedResources + " " + this.name  + " out of " + resources.length + " for account " + account.u_id);
+		this.deleteResources(resourceIds, account);
+	},
+	
+	updateDeploymentsAndInstances: function(deployments, account){
+		// workaround on case when list of resource is empty
+		if (deployments == true) deployments = [];
+		gs.info("Updating " + deployments.length + " deployments for account " + account.u_id);
+		var deploymentIds = [];
+		var instanceIds = [];
+		var updatedInstances = 0;
+		var updatedDeployments = 0;
+		var updateTime = new GlideDateTime();
+		var lastDeploymentsUpdateAt = this.helper.computeDeploymentsUpdatedAt(account);
+		var lastUpdateAt = account.instances_updated_at ? new GlideDateTime(account.instances_updated_at) : null;
+		
+		for (var i = 0; i < deployments.length; i++) {
+			var deployment = deployments[i];
+			deploymentIds.push(deployment.id);
+			if (this.saveToInboundDeployment(deployment, lastDeploymentsUpdateAt))
+				updatedDeployments +=1;
+			var instances = deployment.instances;
+			if (instances){
+				for (var i1 = 0; i1 < instances.length; i1++) {
+					var instance = instances[i1];
+					if (!instance.is_next){
+						instanceIds.push(instance.id);
+						if (this.saveToInboundInstance(instance, lastUpdateAt))
+							updatedInstances +=1;
+					}
+				}
+			}
+		}
+		
+		var rawInstanceIds = this.updateRawInstances(account, lastUpdateAt);
+		if (rawInstanceIds) {
+			//update account timestamp
+			account.instances_updated_at = updateTime;
+			account.update();
+		}
+		gs.info("Updated " + updatedDeployments + " deployments out of " + deployments.length + " for account " + account.u_id);
+		gs.info("Updated " + updatedInstances + " instances out of " + instanceIds.length + " for account " + account.u_id);
+		this.deleteResources(deploymentIds, account);
+		if (rawInstanceIds) {
+			// workaround on case when list of resources is empty
+			if (rawInstanceIds == true) rawInstanceIds = [];
+			instanceIds = instanceIds.concat(rawInstanceIds);
+		}
+		this.deleteResources(instanceIds, account, 'x_ris_rightscale_c_inbound_instances');
+	},
+	
+	updateRawInstances: function(account, lastUpdateAt){
+		var instanceIds = [];
+		var updatedInstances = 0;
+		var instances = new RightScaleResource('instances');
+		var rsInstances = instances.getRSResource(account);
+		if (!rsInstances) {
+			gs.error("Update raw instances failed: response status isn't 200!");
+			return false;
+		}
+		// workaround on case when list of resources is empty
+		if (rsInstances == true) return true;
+		for (var i = 0; i < rsInstances.length; i++) {
+			var instance = rsInstances[i];
+			if (!instance.is_next && !instance.links.deployment){
+				instanceIds.push(instance.id);
+				if (this.saveToInboundInstance(instance, lastUpdateAt))
+					updatedInstances +=1;
+			}
+		}
+		gs.info("Updated " + updatedInstances + " raw instances w/out deployment out of " + instanceIds.length + " for account " + account.u_id);
+		return instanceIds;
+	},
+	
+	updateDeploymentsAndServers: function(deployments, account){
+		// workaround on case when list of resources is empty
+		if (deployments == true) deployments = [];
+		gs.info("Updating " + deployments.length + " deployments for account " + account.u_id);
+		var deploymentIds = [];
+		var serverIds = [];
+		var updatedServers = 0;
+		var updatedDeployments = 0;
+		var updateTime = new GlideDateTime();
+		var lastDeploymentsUpdateAt = this.helper.computeDeploymentsUpdatedAt(account);
+		var lastUpdateAt = account.servers_updated_at ? new GlideDateTime(account.servers_updated_at) : null;
+		
+		for (var i = 0; i < deployments.length; i++) {
+			var deployment = deployments[i];
+			deploymentIds.push(deployment.id);
+			if (this.saveToInboundDeployment(deployment, lastDeploymentsUpdateAt))
+				updatedDeployments +=1;
+			var servers = deployment.servers;
+			if (servers){
+				for (var i1 = 0; i1 < servers.length; i1++) {
+					var server = servers[i1];
+					serverIds.push(server.id);
+					if (this.saveToInboundServer(server, lastUpdateAt))
+						updatedServers +=1;
+				}
+			}
+		}
+
+		//update account timestamp
+		account.servers_updated_at = updateTime;
+		account.update();
+		gs.info("Updated " + updatedDeployments + " deployments out of " + deployments.length + " for account " + account.u_id);
+		gs.info("Updated " + updatedServers + " servers out of " + serverIds.length + " for account " + account.u_id);
+		this.deleteResources(deploymentIds, account);
+		this.deleteResources(serverIds, account, 'x_ris_rightscale_c_servers_web');
+	},
+	
+	updateDeploymentsAndServerArrays: function(deployments, account){
+		// workaround on case when list of resource is empty
+		if (deployments == true) deployments = [];
+		gs.info("Updating " + deployments.length + " deployments for account " + account.u_id);
+		var deploymentIds = [];
+		var arrayIds = [];
+		var updatedServerArrays = 0;
+		var updatedDeployments = 0;
+		var updateTime = new GlideDateTime();
+		var lastDeploymentsUpdateAt = this.helper.computeDeploymentsUpdatedAt(account);
+		var lastUpdateAt = account.server_arrays_updated_at ? new GlideDateTime(account.server_arrays_updated_at) : null;
+		
+		for (var i = 0; i < deployments.length; i++) {
+			var deployment = deployments[i];
+			deploymentIds.push(deployment.id);
+			if (this.saveToInboundDeployment(deployment, lastDeploymentsUpdateAt))
+				updatedDeployments +=1;
+			var arrays = deployment.server_arrays;
+			if (arrays){
+				for (var i1 = 0; i1 < arrays.length; i1++) {
+					var array = arrays[i1];
+					arrayIds.push(array.id);
+					if (this.saveToInboundServerArray(array, lastUpdateAt))
+						updatedServerArrays +=1;
+				}
+			}
+		}
+
+		//update account timestamp
+		account.server_arrays_updated_at = updateTime;
+		account.update();
+		gs.info("Updated " + updatedDeployments + " deployments out of " + deployments.length + " for account " + account.u_id);
+		gs.info("Updated " + updatedServerArrays + " server arrays out of " + arrayIds.length + " for account " + account.u_id);
+		this.deleteResources(deploymentIds, account);
+		this.deleteServerArrays(arrayIds, account);
+	},
+	
+	type: 'RightScaleResource'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2015-01-24 01:38:31</sys_created_on>
+        <sys_id>4ce36ee10f713500bad2fc5be1050e5d</sys_id>
+        <sys_mod_count>325</sys_mod_count>
+        <sys_name>RightScaleResource</sys_name>
+        <sys_package display_value="RightScaleCloudManagement" source="x_ris_rightscale_c">adee18db0f61f100bad2fc5be1050e29</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="RightScaleCloudManagement">adee18db0f61f100bad2fc5be1050e29</sys_scope>
+        <sys_update_name>sys_script_include_4ce36ee10f713500bad2fc5be1050e5d</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2016-05-11 14:05:46</sys_updated_on>
+    </sys_script_include>
+</record_update>

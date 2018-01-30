@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Server Arrays" max_length="40" name="x_ris_rightscale_c_server_arrays" type="collection">
+        <element label="Account" max_length="32" name="account" read_only="true" reference="x_ris_rightscale_c_accounts" reference_cascade_rule="cascade" type="reference"/>
+        <element label="Cloud ID" max_length="255" name="cloud_id" read_only="true" type="string"/>
+        <element label="Cloud Name" max_length="255" name="cloud_name" read_only="true" type="string"/>
+        <element label="deployment" max_length="32" name="deployment" read_only="true" reference="x_ris_rightscale_c_deployments" type="reference"/>
+        <element label="description" max_length="4000" name="description" read_only="true" type="string"/>
+        <element label="href" max_length="255" name="href" read_only="true" type="string"/>
+        <element label="id" max_length="255" name="id" read_only="true" type="string"/>
+        <element label="Instance summary" max_length="4000" name="instance_summary" read_only="true" type="string"/>
+        <element label="links" max_length="4000" name="links" type="glide_list"/>
+        <element label="name" max_length="255" name="name" read_only="true" type="string"/>
+        <element label="state" max_length="40" name="state" read_only="true" type="string"/>
+        <element label="tags" max_length="4000" name="tags" read_only="true" type="glide_list"/>
+        <index name="index">
+            <element name="account"/>
+        </index>
+        <index name="index2">
+            <element name="deployment"/>
+        </index>
+    </element>
+</database>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_rest_message_fn_parameters">
+    <sys_rest_message_fn_parameters action="INSERT_OR_UPDATE">
+        <name>instanceName</name>
+        <rest_message_function display_value="post">f17a800a0fc27500bad2fc5be1050e57</rest_message_function>
+        <sys_class_name>sys_rest_message_fn_parameters</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2015-03-03 12:50:02</sys_created_on>
+        <sys_id>f0f370020fe23900bad2fc5be1050e38</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>instanceName</sys_name>
+        <sys_package display_value="RightScaleCloudManagement" source="x_ris_rightscale_c">adee18db0f61f100bad2fc5be1050e29</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="RightScaleCloudManagement">adee18db0f61f100bad2fc5be1050e29</sys_scope>
+        <sys_update_name>sys_rest_message_fn_parameters_f0f370020fe23900bad2fc5be1050e38</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2015-03-03 12:55:38</sys_updated_on>
+        <type>string</type>
+        <value>dev263</value>
+    </sys_rest_message_fn_parameters>
+</record_update>

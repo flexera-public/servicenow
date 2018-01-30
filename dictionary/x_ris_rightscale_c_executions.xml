@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Executions" max_length="40" name="x_ris_rightscale_c_executions" type="collection">
+        <element label="outputs" max_length="4000" name="outputs" type="glide_list"/>
+        <element label="account" max_length="32" name="u_account" read_only="true" reference="x_ris_rightscale_c_accounts" reference_cascade_rule="cascade" type="reference"/>
+        <element label="application" max_length="32" name="u_application" read_only="true" reference="x_ris_rightscale_c_applications" reference_cascade_rule="cascade" type="reference"/>
+        <element label="cost_unit" max_length="10" name="u_cost_unit" read_only="true" type="string"/>
+        <element label="cost_value" max_length="40" name="u_cost_value" read_only="true" type="string"/>
+        <element label="created_at" max_length="40" name="u_created_at" read_only="true" type="string"/>
+        <element label="created_by" max_length="4000" name="u_created_by" read_only="true" type="string"/>
+        <element label="deployment" max_length="32" name="u_deployment" read_only="true" reference="x_ris_rightscale_c_deployments" reference_cascade_rule="cascade" type="reference"/>
+        <element label="description" max_length="4000" name="u_description" read_only="true" type="string"/>
+        <element label="href" max_length="255" name="u_href" read_only="true" type="string"/>
+        <element display="true" label="id" max_length="40" name="u_id" read_only="true" type="string"/>
+        <element label="launched_from_href" max_length="255" name="u_launched_from_href" read_only="true" type="string"/>
+        <element label="launched_from_name" max_length="255" name="u_launched_from_name" read_only="true" type="string"/>
+        <element label="launched_from_type" max_length="40" name="u_launched_from_type" read_only="true" type="string"/>
+        <element label="links" max_length="4000" name="u_links" read_only="true" type="glide_list"/>
+        <element label="name" max_length="255" name="u_name" read_only="true" type="string"/>
+        <element label="status" max_length="40" name="u_status" read_only="true" type="string"/>
+        <element label="terminated_at" max_length="40" name="u_terminated_at" read_only="true" type="string"/>
+        <index name="index">
+            <element name="u_application"/>
+        </index>
+        <index name="index2">
+            <element name="u_deployment"/>
+        </index>
+        <index name="index3">
+            <element name="u_account"/>
+        </index>
+    </element>
+</database>

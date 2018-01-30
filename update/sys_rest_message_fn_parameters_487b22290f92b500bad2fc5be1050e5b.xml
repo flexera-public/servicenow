@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_rest_message_fn_parameters">
+    <sys_rest_message_fn_parameters action="INSERT_OR_UPDATE">
+        <name>apiVersion</name>
+        <rest_message_function display_value="get">18daeee50f92b500bad2fc5be1050e55</rest_message_function>
+        <sys_class_name>sys_rest_message_fn_parameters</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2015-02-17 21:59:25</sys_created_on>
+        <sys_id>487b22290f92b500bad2fc5be1050e5b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>apiVersion</sys_name>
+        <sys_package display_value="RightScaleCloudManagement" source="x_ris_rightscale_c">adee18db0f61f100bad2fc5be1050e29</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="RightScaleCloudManagement">adee18db0f61f100bad2fc5be1050e29</sys_scope>
+        <sys_update_name>sys_rest_message_fn_parameters_487b22290f92b500bad2fc5be1050e5b</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2015-02-17 21:59:25</sys_updated_on>
+        <type>string</type>
+        <value>1.0</value>
+    </sys_rest_message_fn_parameters>
+</record_update>

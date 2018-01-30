@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_documentation element="u_private_ip_addresses" label="private_ip_addresses" language="en" table="x_ris_rightscale_c_instances">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>u_private_ip_addresses</element>
+            <help/>
+            <hint/>
+            <label>private_ip_addresses</label>
+            <language>en</language>
+            <name>x_ris_rightscale_c_instances</name>
+            <plural>private_ip_addresses</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2015-03-06 13:37:15</sys_created_on>
+            <sys_id>9c9b98470f263100bad2fc5be1050ec1</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>private_ip_addresses</sys_name>
+            <sys_package display_value="RightScaleCloudManagement" source="x_ris_rightscale_c">adee18db0f61f100bad2fc5be1050e29</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="RightScaleCloudManagement">adee18db0f61f100bad2fc5be1050e29</sys_scope>
+            <sys_update_name>sys_documentation_x_ris_rightscale_c_instances_u_private_ip_addresses_en</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2015-03-06 13:37:15</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

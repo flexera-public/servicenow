@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_ris_rightscale_c.RightScaleAuthenticator</api_name>
+        <client_callable>false</client_callable>
+        <description>Class provides methods to authenticate in the RightScale platform</description>
+        <name>RightScaleAuthenticator</name>
+        <script><![CDATA[var RightScaleAuthenticator = Class.create();
+RightScaleAuthenticator.prototype = {
+	initialize: function() {
+		this.helper = new RightScaleHelper();
+	},
+	
+	refreshAccessToken: function(account){
+		var r = new sn_ws.RESTMessageV2('x_ris_rightscale_c.RightScaleAPI Authentication', 'post');
+		r.setStringParameter('baseUrl', account.u_endpoint);
+		r.setStringParameter('refreshToken', account.u_refresh_token.getDecryptedValue());
+		var response = r.execute();
+		this.helper.logResponse(response);
+		return new global.JSON().decode(response.getBody());
+	},
+	
+	updateAccountAccessToken: function(account){
+		gs.info("AccessToken is expired for account " + account.u_id + "...refreshing");
+		var hash = this.refreshAccessToken(account);
+		//Hash with error: {"error":"invalid_grant","error_description":"Invalid grant"}
+		if (hash.error) {
+			gs.error("Error occurred while refreshing AccessToken for account " + account.u_id + ": " + hash.error_description);
+			return false;
+		} else {
+			account.u_access_token = hash.access_token;
+			account.u_expires_in = hash.expires_in;
+			account.refreshed_at = new GlideDateTime();
+			account.update();
+			return true;
+		}
+	},
+	
+	validateAccessToken: function(account){
+		var validInterval = account.u_expires_in - 100;
+		var timeNow = new GlideDateTime();
+		var expiredAt = account.refreshed_at ? (new GlideDateTime(account.refreshed_at)) : timeNow;
+		gs.debug("Refreshed At: " + account.refreshed_at);
+		expiredAt.addSeconds(validInterval);
+		gs.debug("Expires At: " + expiredAt);
+		return timeNow.compareTo(expiredAt) == -1;
+	},
+	
+	loginToSelfService: function(account){
+		var r = new sn_ws.RESTMessageV2('x_ris_rightscale_c.Self-Service Catalog Login', 'get');
+		r.setStringParameter('baseUrl', account.u_ss_endpoint);
+		r.setStringParameter('accountId', account.u_id);
+		r.setStringParameter('accessToken', account.u_access_token.getDecryptedValue());
+		var response = r.execute();
+		this.helper.logResponse(response);
+		
+		return response.getStatusCode();
+	},
+	
+	type: 'RightScaleAuthenticator'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2015-01-24 16:05:38</sys_created_on>
+        <sys_id>2562bd710fb13500bad2fc5be1050ef9</sys_id>
+        <sys_mod_count>56</sys_mod_count>
+        <sys_name>RightScaleAuthenticator</sys_name>
+        <sys_package display_value="RightScaleCloudManagement" source="x_ris_rightscale_c">adee18db0f61f100bad2fc5be1050e29</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="RightScaleCloudManagement">adee18db0f61f100bad2fc5be1050e29</sys_scope>
+        <sys_update_name>sys_script_include_2562bd710fb13500bad2fc5be1050ef9</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2016-04-06 23:32:20</sys_updated_on>
+    </sys_script_include>
+</record_update>

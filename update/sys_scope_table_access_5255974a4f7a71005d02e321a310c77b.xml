@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_scope_table_access">
+    <sys_scope_table_access action="INSERT_OR_UPDATE">
+        <create_access>false</create_access>
+        <delete_access>false</delete_access>
+        <example_stack_trace>Default-thread-57
+	com.glide.sys.fencing.dependency.ScopeAccessProvider$ScopeAccessCache.getCurrentStackTrace(ScopeAccessProvider.java:231)
+	com.glide.sys.fencing.dependency.ScopeAccessProvider$ScopeAccessCache.record(ScopeAccessProvider.java:200)
+	com.glide.sys.fencing.dependency.ScopeAccessProvider$ScopeAccessCache.access$100(ScopeAccessProvider.java:80)
+	com.glide.sys.fencing.dependency.ScopeAccessProvider.recordAccess(ScopeAccessProvider.java:63)
+	com.glide.sys.fencing.dependency.ScopeAccessRecorder.record(ScopeAccessRecorder.java:13)
+	com.glide.script.fencing.access.ScopedTableAccess.hasRightsTo(ScopedTableAccess.java:45)
+	com.glide.script.fencing.access.ScopedTableAccess.hasRightsTo(ScopedTableAccess.java:21)
+	com.glide.script.fencing.ScopedGlideRecord.jsFunction_get(ScopedGlideRecord.java:158)
+	sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	java.lang.reflect.Method.invoke(Method.java:597)
+	org.mozilla.javascript.FunctionObject.doInvoke(FunctionObject.java:597)
+	org.mozilla.javascript.FunctionObject.call(FunctionObject.java:504)
+	org.mozilla.javascript.ScriptRuntime.call(ScriptRuntime.java:1227)
+	org.mozilla.javascript.gen.c3813.call(sys_script.80a2d34a4f7a71005d02e321a310c7b7:6)
+	org.mozilla.javascript.optimizer.OptRuntime.callSimple(OptRuntime.java:297)
+	org.mozilla.javascript.gen.c3814.call(sys_script.80a2d34a4f7a71005d02e321a310c7b7:11)
+	org.mozilla.javascript.gen.c3814.exec(sys_script.80a2d34a4f7a71005d02e321a310c7b7)
+	com.glide.script.ScriptEvaluator.execute(ScriptEvaluator.java:233)
+	com.glide.script.ScriptEvaluator.evaluateString(ScriptEvaluator.java:105)
+	com.glide.script.ScriptEvaluator.evaluateString(ScriptEvaluator.java:72)
+	com.glide.script.BusinessRule.runScript(BusinessRule.java:346)
+	com.glide.script.BusinessRule.runSyncBusinessRule(BusinessRule.java:258)
+	com.glide.script.BusinessRule.runBusinessRule(BusinessRule.java:170)
+	com.glide.script.BusinessRule.run(BusinessRule.java:146)
+	com.glide.script.GlideRecordBusinessRules.run(GlideRecordBusinessRules.java:85)
+	com.glide.script.GlideRecord.runScripts(GlideRecord.java:1159)
+	com.glide.script.GlideRecord.runScriptsAndEngines(GlideRecord.java:1109)
+	com.glide.script.GlideRecord.postChange(GlideRecord.java:4478)
+	com.glide.script.GlideRecord.postUpdate(GlideRecord.java:4450)
+	com.glide.script.GlideRecord.updateWithoutResettingOperation(GlideRecord.java:4063)
+	com.glide.script.GlideRecord.update(GlideRecord.java:3987)
+	com.glide.script.GlideRecord.update(GlideRecord.java:3908)
+	com.glide.processors.SystemPropertiesProcessor.saveUpdates(SystemPropertiesProcessor.java:128)
+	com.glide.processors.SystemPropertiesProcessor.process(SystemPropertiesProcessor.java:52)
+	com.glide.processors.Processor.runProcessor(Processor.java:401)
+	com.glide.processors.Processor.processTransaction(Processor.java:191)
+	com.glide.processors.ProcessorRegistry.process(ProcessorRegistry.java:146)
+	com.glide.ui.GlideServletTransaction.process(GlideServletTransaction.java:36)
+	com.glide.ui.GlideServlet$1.run(GlideServlet.java:414)
+	java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:895)
+	java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:918)
+	java.lang.Thread.run(Thread.java:662)
+</example_stack_trace>
+        <read_access>true</read_access>
+        <source_scope display_value="RightScaleCloudManagement">adee18db0f61f100bad2fc5be1050e29</source_scope>
+        <sys_class_name>sys_scope_table_access</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2015-03-16 10:50:43</sys_created_on>
+        <sys_id>5255974a4f7a71005d02e321a310c77b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>sysauto_script</sys_name>
+        <sys_package display_value="RightScaleCloudManagement" source="x_ris_rightscale_c">adee18db0f61f100bad2fc5be1050e29</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="RightScaleCloudManagement">adee18db0f61f100bad2fc5be1050e29</sys_scope>
+        <sys_update_name>sys_scope_table_access_5255974a4f7a71005d02e321a310c77b</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2015-03-16 10:50:43</sys_updated_on>
+        <table_name>sysauto_script</table_name>
+        <target_scope display_value="Global">global</target_scope>
+        <write_access>false</write_access>
+    </sys_scope_table_access>
+</record_update>
