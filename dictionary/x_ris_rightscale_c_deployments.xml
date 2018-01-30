@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element label="Deployments" max_length="40" name="x_ris_rightscale_c_deployments" type="collection">
+        <element label="tags" max_length="4000" name="tags" read_only="true" type="glide_list"/>
+        <element label="description" max_length="4000" name="u_description" read_only="true" type="string"/>
+        <element label="href" max_length="255" name="u_href" read_only="true" type="string"/>
+        <element display="true" label="id" max_length="255" name="u_id" read_only="true" type="string"/>
+        <element label="links" max_length="4000" name="u_links" read_only="true" type="glide_list"/>
+        <element label="name" mandatory="true" max_length="255" name="u_name" read_only="true" type="string"/>
+        <element label="account" mandatory="true" max_length="32" name="u_x_ris_rightscale_c_account_id" read_only="true" reference="x_ris_rightscale_c_accounts" reference_cascade_rule="cascade" type="reference"/>
+    </element>
+</database>

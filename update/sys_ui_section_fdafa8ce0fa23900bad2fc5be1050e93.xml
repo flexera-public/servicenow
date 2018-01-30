@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_ui_section caption="" section_id="fdafa8ce0fa23900bad2fc5be1050e93" sys_domain="global" table="x_ris_rightscale_c_inbound_applications" version="3" view="">
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_href</element>
+            <position>0</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2015-03-03 12:31:08</sys_created_on>
+            <sys_id>daafa8ce0fa23900bad2fc5be1050e94</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_ris_rightscale_c_inbound_applications" sys_domain="global" view="Default view">fdafa8ce0fa23900bad2fc5be1050e93</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2015-03-03 12:31:08</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_id</element>
+            <position>1</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2015-03-03 12:31:08</sys_created_on>
+            <sys_id>1eafa8ce0fa23900bad2fc5be1050e94</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_ris_rightscale_c_inbound_applications" sys_domain="global" view="Default view">fdafa8ce0fa23900bad2fc5be1050e93</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2015-03-03 12:31:08</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_long_description</element>
+            <position>2</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2015-03-03 12:31:08</sys_created_on>
+            <sys_id>5eafa8ce0fa23900bad2fc5be1050e94</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_ris_rightscale_c_inbound_applications" sys_domain="global" view="Default view">fdafa8ce0fa23900bad2fc5be1050e93</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2015-03-03 12:31:08</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_name</element>
+            <position>3</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2015-03-03 12:31:08</sys_created_on>
+            <sys_id>9eafa8ce0fa23900bad2fc5be1050e94</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_ris_rightscale_c_inbound_applications" sys_domain="global" view="Default view">fdafa8ce0fa23900bad2fc5be1050e93</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2015-03-03 12:31:08</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_required_parameters</element>
+            <position>4</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2015-03-03 12:31:08</sys_created_on>
+            <sys_id>deafa8ce0fa23900bad2fc5be1050e94</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_ris_rightscale_c_inbound_applications" sys_domain="global" view="Default view">fdafa8ce0fa23900bad2fc5be1050e93</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2015-03-03 12:31:08</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_short_description</element>
+            <position>5</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2015-03-03 12:31:08</sys_created_on>
+            <sys_id>12afa8ce0fa23900bad2fc5be1050e95</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_ris_rightscale_c_inbound_applications" sys_domain="global" view="Default view">fdafa8ce0fa23900bad2fc5be1050e93</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2015-03-03 12:31:08</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_account_id</element>
+            <position>6</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2015-03-03 12:31:08</sys_created_on>
+            <sys_id>52afa8ce0fa23900bad2fc5be1050e95</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_ris_rightscale_c_inbound_applications" sys_domain="global" view="Default view">fdafa8ce0fa23900bad2fc5be1050e93</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2015-03-03 12:31:08</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>u_schedules</element>
+            <position>7</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2015-03-03 12:31:08</sys_created_on>
+            <sys_id>a2afa8ce0fa23900bad2fc5be1050e95</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_ris_rightscale_c_inbound_applications" sys_domain="global" view="Default view">fdafa8ce0fa23900bad2fc5be1050e93</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2015-03-03 12:31:08</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>parameters</element>
+            <position>8</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2015-04-01 11:55:22</sys_created_on>
+            <sys_id>419db1d74fcb31005d02e321a310c73a</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_ris_rightscale_c_inbound_applications" sys_domain="global" view="Default view">fdafa8ce0fa23900bad2fc5be1050e93</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2015-04-01 11:55:22</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_element action="INSERT_OR_UPDATE">
+            <element>schedule_required</element>
+            <position>9</position>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2015-04-01 12:20:23</sys_created_on>
+            <sys_id>a343ca1b4fcb31005d02e321a310c7fb</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_ui_formatter/>
+            <sys_ui_section caption="NULL" display_value="" name="x_ris_rightscale_c_inbound_applications" sys_domain="global" view="Default view">fdafa8ce0fa23900bad2fc5be1050e93</sys_ui_section>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2015-04-01 12:20:23</sys_updated_on>
+            <sys_user/>
+            <type/>
+        </sys_ui_element>
+        <sys_ui_section action="INSERT_OR_UPDATE">
+            <caption/>
+            <header>false</header>
+            <name>x_ris_rightscale_c_inbound_applications</name>
+            <roles/>
+            <sys_class_name>sys_ui_section</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2015-03-03 12:31:05</sys_created_on>
+            <sys_domain>global</sys_domain>
+            <sys_domain_path>/</sys_domain_path>
+            <sys_id>fdafa8ce0fa23900bad2fc5be1050e93</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>x_ris_rightscale_c_inbound_applications</sys_name>
+            <sys_overrides/>
+            <sys_package display_value="RightScaleCloudManagement" source="x_ris_rightscale_c">adee18db0f61f100bad2fc5be1050e29</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="RightScaleCloudManagement">adee18db0f61f100bad2fc5be1050e29</sys_scope>
+            <sys_update_name>sys_ui_section_fdafa8ce0fa23900bad2fc5be1050e93</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2015-03-03 12:31:05</sys_updated_on>
+            <sys_user/>
+            <title>true</title>
+            <view display_value="Default view" name="NULL">Default view</view>
+            <view_name/>
+        </sys_ui_section>
+    </sys_ui_section>
+</record_update>

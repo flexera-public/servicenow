@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update>
+    <sys_documentation element="u_launched_from_name" label="Launched from name" language="en" table="x_ris_rightscale_c_inbound_executions">
+        <sys_documentation action="INSERT_OR_UPDATE">
+            <element>u_launched_from_name</element>
+            <help/>
+            <hint/>
+            <label>Launched from name</label>
+            <language>en</language>
+            <name>x_ris_rightscale_c_inbound_executions</name>
+            <plural>Launched from names</plural>
+            <sys_class_name>sys_documentation</sys_class_name>
+            <sys_created_by>admin</sys_created_by>
+            <sys_created_on>2015-02-20 13:50:43</sys_created_on>
+            <sys_id>3c6854260f96b500bad2fc5be1050e93</sys_id>
+            <sys_mod_count>0</sys_mod_count>
+            <sys_name>Launched from name</sys_name>
+            <sys_package display_value="RightScaleCloudManagement" source="x_ris_rightscale_c">adee18db0f61f100bad2fc5be1050e29</sys_package>
+            <sys_policy/>
+            <sys_scope display_value="RightScaleCloudManagement">adee18db0f61f100bad2fc5be1050e29</sys_scope>
+            <sys_update_name>sys_documentation_x_ris_rightscale_c_inbound_executions_u_launched_from_name_en</sys_update_name>
+            <sys_updated_by>admin</sys_updated_by>
+            <sys_updated_on>2015-02-20 13:50:43</sys_updated_on>
+            <url/>
+            <url_target/>
+        </sys_documentation>
+    </sys_documentation>
+</record_update>

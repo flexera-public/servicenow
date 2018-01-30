@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_rest_message_fn_parameters">
+    <sys_rest_message_fn_parameters action="INSERT_OR_UPDATE">
+        <name>accessToken</name>
+        <rest_message_function display_value="get">e33dbd750fd2b500bad2fc5be1050e47</rest_message_function>
+        <sys_class_name>sys_rest_message_fn_parameters</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2015-02-18 13:17:59</sys_created_on>
+        <sys_id>ccbdfd750fd2b500bad2fc5be1050e72</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>accessToken</sys_name>
+        <sys_package display_value="RightScaleCloudManagement" source="x_ris_rightscale_c">adee18db0f61f100bad2fc5be1050e29</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="RightScaleCloudManagement">adee18db0f61f100bad2fc5be1050e29</sys_scope>
+        <sys_update_name>sys_rest_message_fn_parameters_ccbdfd750fd2b500bad2fc5be1050e72</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2015-02-18 13:18:24</sys_updated_on>
+        <type>string</type>
+        <value>WzMsImM2ZTk2OTI0LWI3NmYtMTFlNC1iNGQ1LTIyMDAwYjc5NDI2NyIsIm1vby05MyIsMTQyNDI2NTE0MywxNDI0MjcyMzQzLHsidXNlciI6MzczMDYsImltcGVyc29uYXRvciI6NTAzNDV9LHsiYWNjb3VudCI6NjAwNzN9XQB6Tg9W3cl9n4XIAdvUYonnYR_MDlokFTaZ6eGuGe_pX-2zShsrEm9kAwcIJifV8VxjRwwmxqj2gPNwD7xqp_Wzugx1DhUckKb03Wqmob5woLNSNV5G1mu-NWgwkhk-vwOAVqSQCe5BC-pn1kSybxH6gyv5xmgIvhWiuhpFevZ90Q==</value>
+    </sys_rest_message_fn_parameters>
+</record_update>

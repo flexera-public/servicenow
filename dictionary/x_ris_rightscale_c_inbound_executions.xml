@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<database>
+    <element extends="sys_import_set_row" label="Inbound Executions" max_length="40" name="x_ris_rightscale_c_inbound_executions" type="collection">
+        <element attributes="import_attribute_name=u_account_id" label="Account Id" max_length="40" name="u_account_id" type="string"/>
+        <element attributes="import_attribute_name=u_application" label="Application" max_length="40" name="u_application" type="string"/>
+        <element attributes="import_attribute_name=u_cost_unit" label="Cost unit" max_length="40" name="u_cost_unit" type="string"/>
+        <element attributes="import_attribute_name=u_cost_value" label="Cost value" max_length="40" name="u_cost_value" type="string"/>
+        <element attributes="import_attribute_name=u_created_at" label="Created at" max_length="40" name="u_created_at" type="string"/>
+        <element attributes="import_attribute_name=u_created_by" label="Created by" max_length="1000" name="u_created_by" type="string"/>
+        <element attributes="import_attribute_name=u_deployment" label="Deployment" max_length="40" name="u_deployment" type="string"/>
+        <element attributes="import_attribute_name=u_description" label="Description" max_length="4000" name="u_description" type="string"/>
+        <element attributes="import_attribute_name=u_href" label="Href" max_length="1000" name="u_href" type="string"/>
+        <element attributes="import_attribute_name=u_id" label="ID" max_length="40" name="u_id" type="string"/>
+        <element attributes="import_attribute_name=u_launched_from_href" label="Launched from href" max_length="1000" name="u_launched_from_href" type="string"/>
+        <element attributes="import_attribute_name=u_launched_from_name" label="Launched from name" max_length="1000" name="u_launched_from_name" type="string"/>
+        <element attributes="import_attribute_name=u_launched_from_type" label="Launched from type" max_length="40" name="u_launched_from_type" type="string"/>
+        <element attributes="import_attribute_name=u_links" label="Links" max_length="4000" name="u_links" type="string"/>
+        <element attributes="import_attribute_name=u_name" label="Name" max_length="1000" name="u_name" type="string"/>
+        <element attributes="import_attribute_name=u_resource_ids" label="Resource IDs" max_length="65000" name="u_resource_ids" type="string"/>
+        <element attributes="import_attribute_name=u_status" label="Status" max_length="40" name="u_status" type="string"/>
+        <element attributes="import_attribute_name=u_terminated_at" label="Terminated at" max_length="40" name="u_terminated_at" type="string"/>
+    </element>
+</database>

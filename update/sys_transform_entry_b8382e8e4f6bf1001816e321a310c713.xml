@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sys_transform_entry">
+    <sys_transform_entry action="INSERT_OR_UPDATE">
+        <choice_action>reject</choice_action>
+        <coalesce>true</coalesce>
+        <coalesce_case_sensitive>false</coalesce_case_sensitive>
+        <coalesce_empty_fields>false</coalesce_empty_fields>
+        <date_format>yyyy-MM-dd hh:mm:ss</date_format>
+        <map display_value="Inbound Server Arrays">9218ea8e4f6bf1001816e321a310c742</map>
+        <reference_value_field/>
+        <source_field>account</source_field>
+        <source_script/>
+        <source_table>x_ris_rightscale_c_inbound_server_arrays</source_table>
+        <sys_class_name>sys_transform_entry</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2015-04-22 14:20:33</sys_created_on>
+        <sys_id>b8382e8e4f6bf1001816e321a310c713</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name>account</sys_name>
+        <sys_package display_value="RightScaleCloudManagement" source="x_ris_rightscale_c">adee18db0f61f100bad2fc5be1050e29</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="RightScaleCloudManagement">adee18db0f61f100bad2fc5be1050e29</sys_scope>
+        <sys_update_name>sys_transform_entry_b8382e8e4f6bf1001816e321a310c713</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2015-11-26 12:25:30</sys_updated_on>
+        <target_field>account</target_field>
+        <target_table>x_ris_rightscale_c_server_arrays</target_table>
+        <use_source_script>false</use_source_script>
+    </sys_transform_entry>
+</record_update>

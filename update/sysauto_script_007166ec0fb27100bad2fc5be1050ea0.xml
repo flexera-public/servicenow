@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<record_update table="sysauto_script">
+    <sysauto_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <condition/>
+        <conditional>false</conditional>
+        <name>RightScale Update Deployments and Servers</name>
+        <run_as display_value="System Administrator">6816f79cc0a8016401c5a33be04be441</run_as>
+        <run_as_tz/>
+        <run_dayofmonth>1</run_dayofmonth>
+        <run_dayofweek>1</run_dayofweek>
+        <run_period>1970-01-01 00:01:00</run_period>
+        <run_start>2015-03-11 15:13:41</run_start>
+        <run_time>1970-01-01 11:15:00</run_time>
+        <run_type>periodically</run_type>
+        <script><![CDATA[var authenticator = new RightScaleAuthenticator();
+var helper = new RightScaleHelper();
+var ready = helper.readyForUpdate(current.run_start, 'server');
+var forceUpdateMessage = "";
+var account = new GlideRecord('x_ris_rightscale_c_accounts');
+account.query();
+while (account.next()) {
+	if (account.servers_updated_at) {
+		if (!ready) continue;
+	} else {
+		forceUpdateMessage = "Force ";
+	}
+	gs.info("Executing Scheduled Job: RightScale " + forceUpdateMessage + "Update Deployments and Servers for account " + account.u_id);
+
+	if (!authenticator.validateAccessToken(account)){
+		if (!authenticator.updateAccountAccessToken(account)) continue;
+	}
+	
+	try {
+		var deployments = new RightScaleResource('deployments');
+		var rsDeployments = deployments.getRSResource(account);
+		if (!rsDeployments) {
+			gs.error("Updating Deployments/Servers failed for account " + account.u_id + " due to unsuccessful response to RS API.");
+			continue;
+		}
+		deployments.updateDeploymentsAndServers(rsDeployments, account);
+	} catch(ex) {
+		gs.error("Updating Deployments/Servers failed for account " + account.u_id + " with error: " + ex.toString());
+	}
+}]]></script>
+        <sys_class_name>sysauto_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2015-03-11 15:13:56</sys_created_on>
+        <sys_id>007166ec0fb27100bad2fc5be1050ea0</sys_id>
+        <sys_mod_count>108</sys_mod_count>
+        <sys_name>RightScale Update Deployments and Servers</sys_name>
+        <sys_package display_value="RightScaleCloudManagement" source="x_ris_rightscale_c">adee18db0f61f100bad2fc5be1050e29</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="RightScaleCloudManagement">adee18db0f61f100bad2fc5be1050e29</sys_scope>
+        <sys_update_name>sysauto_script_007166ec0fb27100bad2fc5be1050ea0</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2015-12-04 13:23:55</sys_updated_on>
+        <upgrade_safe>false</upgrade_safe>
+    </sysauto_script>
+</record_update>
