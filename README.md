@@ -4,12 +4,14 @@ This integration enables launching RightScale Cloud Application Templates as wel
 See http://docs.rightscale.com/servicenow/index.html for more information.
 
 # Integration Version
-v1.1.11
+v1.1.13
 
 # Supported ServiceNow Releases
 - Geneva
 - Helsinki
 - Istanbul
+- Jakarta
+- Kingston
 
 # Notes
-Light testing has been done with the Jakrata and Kingston ServiceNow releases as well.
+Currently undergoing certification for ServiceNow store.
