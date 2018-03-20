@@ -14,4 +14,4 @@ v1.1.13
 - Kingston
 
 # Notes
-Currently undergoing certification for ServiceNow store.
+v1.1.13 published in [ServiceNow Store](https://store.servicenow.com/sn_appstore_store.do#!/store/application/adee18db0f61f100bad2fc5be1050e29/1.1.13)
