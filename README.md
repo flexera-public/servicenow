@@ -12,6 +12,7 @@ v1.1.13
 - Istanbul
 - Jakarta
 - Kingston
+- London
 
 # Notes
 v1.1.13 published in [ServiceNow Store](https://store.servicenow.com/sn_appstore_store.do#!/store/application/adee18db0f61f100bad2fc5be1050e29/1.1.13)
