@@ -1,5 +1,15 @@
 # Change Log
 
+## v1.2.0
+- Renamed application to "Flexera CloudManagement"
+- Revised Inbound Executions TransformMap
+  - Removed "u_cost_value" and "u_cost_unit"
+- Revised Executions table
+  - Removed "Cost Value" and "Cost Unit" fields
+- Revised "RightScale Resource" script to exclude cost_value and cost_unit fields
+- Changed Documentation link to https://docs.rightscale.com/servicenow/index.html
+
+
 ## v1.1.13
 - Revised ACLs on Tables
   - Added Delete ACL for "x_ris_rightscale_c.app_role" on table "x_ris_rightscale_c_inbound_executions".
